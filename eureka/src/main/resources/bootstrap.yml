@@ -1,0 +1,24 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: eureka
+
+eureka:
+  instance:
+    #eureka客户端实例名
+    hostname: eureka
+    preferIpAddress: true
+  client:
+    #当前客户端是否获取eureka服务器注册表上的注册信息
+    fetchRegistry: false
+    #不向注册中心注册自己
+    registerWithEureka: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    #心跳检测间隔
+    eviction-interval-timer-in-ms: 4000
+    #关闭自我保护状态
+    enable-self-preservation: false
