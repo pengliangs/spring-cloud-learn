@@ -3,6 +3,12 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    
+    <modules>
+        <module>eureka</module>
+        <module>gateway</module>
+        <module>services</module>
+    </modules>
 
     <groupId>com.github.pengliangs</groupId>
     <artifactId>spring-cloud-learn</artifactId>
@@ -26,11 +32,6 @@
         <google-guava.version>24.0-jre</google-guava.version>
         <druid.version>1.1.18</druid.version>
     </properties>
-
-    <modules>
-        <module>eureka</module>
-        <module>gateway</module>
-    </modules>
 
     <dependencies>
         <!--eureka 客户端-->
