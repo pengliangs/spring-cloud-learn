@@ -8,6 +8,7 @@
         <module>eureka</module>
         <module>gateway</module>
         <module>services</module>
+        <module>admin-server</module>
     </modules>
 
     <groupId>com.github.pengliangs</groupId>
@@ -49,6 +50,11 @@
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-client</artifactId>
             <version>${spring-boot-admin.version}</version>
+        </dependency>
+        <!-- 断路器 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
         </dependency>
         <!--lombok-->
         <dependency>
