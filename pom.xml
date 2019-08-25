@@ -9,6 +9,7 @@
         <module>gateway</module>
         <module>services</module>
         <module>graphical</module>
+        <module>common</module>
     </modules>
 
     <groupId>com.github.pengliangs</groupId>
@@ -33,6 +34,9 @@
         <lombok.version>1.18.8</lombok.version>
         <google-guava.version>24.0-jre</google-guava.version>
         <druid.version>1.1.18</druid.version>
+        <mybatis-plus.version>3.1.1</mybatis-plus.version>
+        <mybatis-plus-generator.version>3.1.1</mybatis-plus-generator.version>
+
     </properties>
 
     <dependencies>
@@ -103,11 +107,13 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid.version}</version>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 

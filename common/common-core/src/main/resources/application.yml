@@ -1,0 +1,13 @@
+#mybatis-plus 全局配置
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*Mapper.xml
+  global-config:
+    db-config:
+      field-strategy: not_empty
+      id-type: id_worker
+      #逻辑已删除值
+      logic-delete-value: 0
+      # 逻辑未删除值
+      logic-not-delete-value: 1
+    banner: false
+    super-mapper-class: com.github.pengliangs.common.core.mapper.BaseMapper

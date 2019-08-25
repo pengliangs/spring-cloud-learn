@@ -16,7 +16,7 @@ spring:
        - id: user-service
          uri: lb://user-service
          predicates:
-           - Path=/api/**
+           - Path=/user/**
          filters:
            - StripPrefix=1
   #应用监控

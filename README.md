@@ -1,6 +1,6 @@
 # spring-cloud-learn
 
-#目录介绍
+# 目录介绍
 
 ```lua
 spring-cloud-learn
@@ -15,7 +15,7 @@ spring-cloud-learn
 
 # 遇到错误
 
-## 启动报错 
+* 启动报错 
 ```text
 java.nio.charset.MalformedInputException: Input length = 1
 ```
@@ -25,7 +25,7 @@ java.nio.charset.MalformedInputException: Input length = 1
 ```
 
 
-#整合zipkin访问zipkin ui
+* 整合zipkin访问zipkin ui
 
 ```text
 java.lang.IllegalArgumentException: Prometheus requires that all meters with the same name have the same set of tag keys. There is already an existing meter named 'http_server_requests_seconds' containing tag keys [method, status, uri]. The meter you are attempting to register has keys [exception, method, outcome, status, uri].
