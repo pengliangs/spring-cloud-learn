@@ -1,23 +1,23 @@
 server:
-  port: 9040
+  port: 9411
 spring:
   application:
-    name: user-service
+    name: zipkin
   #应用监控
   boot:
     admin:
       client:
         url: http://localhost:9010
-  #服务链路追踪
-  zipkin:
-    base-url: http://localhost:9411
-    sleuth:
-      sampler:
-        probability: 1
-#注册中心
+#注册中心配置
 eureka:
   instance:
     prefer-ip-address: true
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+
+management:
+  metrics:
+    web:
+      server:
+        auto-time-requests: false

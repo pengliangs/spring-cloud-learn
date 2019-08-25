@@ -6,9 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
+ * admin健康监测
+ *
  * @author pengliang
  * @date 2019/8/24 11:03
- * @description: admin健康监测
  */
 @EnableAdminServer
 @EnableDiscoveryClient

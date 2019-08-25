@@ -8,7 +8,7 @@
         <module>eureka</module>
         <module>gateway</module>
         <module>services</module>
-        <module>admin-server</module>
+        <module>graphical</module>
     </modules>
 
     <groupId>com.github.pengliangs</groupId>
@@ -28,6 +28,7 @@
         <spring-platform.version>Cairo-SR8</spring-platform.version>
         <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
         <spring-boot-admin.version>2.1.6</spring-boot-admin.version>
+        <zipkin.version>2.12.2</zipkin.version>
 
         <lombok.version>1.18.8</lombok.version>
         <google-guava.version>24.0-jre</google-guava.version>
@@ -55,6 +56,15 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+        </dependency>
+        <!-- 链路追踪 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-sleuth-zipkin</artifactId>
         </dependency>
         <!--lombok-->
         <dependency>
