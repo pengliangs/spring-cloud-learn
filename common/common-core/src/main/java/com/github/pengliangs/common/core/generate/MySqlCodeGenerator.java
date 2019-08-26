@@ -1,7 +1,6 @@
 package com.github.pengliangs.common.core.generate;
 
 import com.baomidou.mybatisplus.annotation.DbType;
-import com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
@@ -9,7 +8,8 @@ import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
-import com.github.pengliangs.common.core.constant.CharacterConstant;
+import com.github.pengliangs.common.core.constant.PackageConstant;
+import com.github.pengliangs.common.core.constant.StringConstant;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,30 +17,28 @@ import java.io.File;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Scanner;
 
 /**
- * @author: pengliang
- * @date: 2019/4/1 13:59
- * @description：
+ * @author pengliang
+ * @date 2019/4/1 13:59
  */
 @SuppressWarnings("unchecked")
 @Slf4j
-public class MySqlCodeGenerator {
+public final class MySqlCodeGenerator {
 
-    public static void main(String[] args) {
-        String username = "depuser";
-        String password = "a4|n7:Bb*Kgaqvu";
-        String url = "jdbc:mysql://120.78.87.3:3306/yinian_app_user?useUnicode=true&characterEncoding=gbk&useSSL=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai";
-        String[] excludePrefix = {"bs_","sys_"};
-        String tableNames = "base_university";
-        String authorName = "pengliang";
+    /**
+     * MySql反向
+     * 默认生成路径: com.github.pengliangs.generate
+     *
+     * @param generatorParam
+     */
+    public static void generator(GeneratorParam generatorParam) {
         MySqlCodeGenerator mySqlCodeGenerator = new MySqlCodeGenerator();
         new AutoGenerator()
-                .setGlobalConfig(mySqlCodeGenerator.getGlobalConfig(authorName))
-                .setDataSource(mySqlCodeGenerator.getDataSourceConfig(username, password, url))
+                .setGlobalConfig(mySqlCodeGenerator.getGlobalConfig(generatorParam.getAuthorName()))
+                .setDataSource(mySqlCodeGenerator.getDataSourceConfig(generatorParam.getUsername(), generatorParam.getPassword(), generatorParam.getUrl()))
                 .setPackageInfo(mySqlCodeGenerator.getPackageConfig())
-                .setStrategy(mySqlCodeGenerator.getStrategyConfig(excludePrefix, tableNames))
+                .setStrategy(mySqlCodeGenerator.getStrategyConfig(StringUtils.split(generatorParam.getPrefixExcludes(), StringConstant.SYMBOL_COMMA), generatorParam.getTables()))
                 .setCfg(mySqlCodeGenerator.getInjectionConfig())
                 .setTemplateEngine(new FreemarkerTemplateEngine())
                 .setTemplate(mySqlCodeGenerator.getTemplateConfig())
@@ -55,21 +53,6 @@ public class MySqlCodeGenerator {
      */
     private TemplateConfig getTemplateConfig() {
         return new TemplateConfig().setXml(null);
-    }
-
-    /**
-     * 读取控制台内容
-     */
-    private static String scanner(String tip) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("请输入" + tip + "：");
-        if (scanner.hasNext()) {
-            String ipt = scanner.next();
-            if (StringUtils.isNotEmpty(ipt)) {
-                return ipt;
-            }
-        }
-        throw new MybatisPlusException("请输入正确的" + tip + "！");
     }
 
     /**
@@ -92,12 +75,12 @@ public class MySqlCodeGenerator {
                 // XML columList
                 .setBaseColumnList(false)
                 .setAuthor(authorName)
-                .setSwagger2(true)
+                .setSwagger2(false)
                 //各层文件名称方式，例如： %sAction 生成 UserAction
                 .setEntityName("%s")
-                .setMapperName("%sMapper")
-                .setXmlName("%sMapper")
-                .setServiceName("I%sService")
+                .setMapperName("%sDAO")
+                .setXmlName("%sDAO")
+                .setServiceName("%sService")
                 .setServiceImplName("%sServiceImpl")
                 .setControllerName("%sRestController");
     }
@@ -122,12 +105,12 @@ public class MySqlCodeGenerator {
      */
     private PackageConfig getPackageConfig() {
         return new PackageConfig()
-                .setParent("com.zynn.generate")
-                .setEntity("model")
+                .setParent(PackageConstant.CODE_GENERATE)
+                .setEntity("module.entity")
                 .setController("controller")
                 .setService("service")
                 .setServiceImpl("service.impl")
-                .setMapper("mapper");
+                .setMapper("dao");
     }
 
     /**
@@ -147,7 +130,7 @@ public class MySqlCodeGenerator {
             // 自定义输出文件目录
             @Override
             public String outputFile(TableInfo tableInfo) {
-                return getResourcePath() + "/mapper/" + tableInfo.getEntityName() + "Mapper.xml";
+                return getResourcePath() + "/mapper/" + tableInfo.getEntityName() + "DAO.xml";
             }
         }));
     }
@@ -167,15 +150,15 @@ public class MySqlCodeGenerator {
                 // 表名生成策略
                 .setNaming(NamingStrategy.underline_to_camel)
                 .setColumnNaming(NamingStrategy.underline_to_camel)
-                .setSuperEntityClass("com.zynn.framework.model.convert.Convert")
+               // .setSuperEntityClass("com.github.pengliangs.common.core.module.BaseModule")
                 // 自定义 mapper 父类
-                .setSuperMapperClass("com.zynn.framework.mapper.BaseMapper")
+                .setSuperMapperClass("com.github.pengliangs.common.core.dao.BaseDAO")
                 // 自定义 controller 父类
-                .setSuperControllerClass("com.zynn.framework.controller.SuperController")
+                .setSuperControllerClass("com.github.pengliangs.common.core.controller.BaseController")
                 // 自定义 service 实现类父类
-                .setSuperServiceImplClass("com.zynn.framework.service.impl.BaseServiceImpl")
+                .setSuperServiceImplClass("com.github.pengliangs.common.core.service.impl.BaseServiceImpl")
                 // 自定义 service 接口父类
-                .setSuperServiceClass("com.zynn.framework.service.BaseService")
+                .setSuperServiceClass("com.github.pengliangs.common.core.service.BaseService")
                 // 【实体】是否生成字段常量（默认 false）
                 .setEntityColumnConstant(false)
                 // 【实体】是否为构建者模型（默认 false）
@@ -187,7 +170,7 @@ public class MySqlCodeGenerator {
                 .setRestControllerStyle(true)
                 //是否生成实体时，生成字段注解
                 .setEntityTableFieldAnnotationEnable(true)
-                .setInclude(StringUtils.split(tableName, CharacterConstant.SYMBOL_COMMA));
+                .setInclude(StringUtils.split(tableName, StringConstant.SYMBOL_COMMA));
     }
 
 

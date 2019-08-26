@@ -3,6 +3,7 @@ mybatis-plus:
   mapper-locations: classpath:mapper/**/*Mapper.xml
   global-config:
     db-config:
+      db-type: mysql
       field-strategy: not_empty
       id-type: id_worker
       #逻辑已删除值
@@ -10,4 +11,4 @@ mybatis-plus:
       # 逻辑未删除值
       logic-not-delete-value: 1
     banner: false
-    super-mapper-class: com.github.pengliangs.common.core.mapper.BaseMapper
+    super-mapper-class: com.github.pengliangs.common.core.dao.BaseDAO

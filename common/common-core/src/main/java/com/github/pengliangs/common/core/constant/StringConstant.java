@@ -6,7 +6,7 @@ package com.github.pengliangs.common.core.constant;
  * @author pengliang
  * @date 2019/4/17 10:56
  */
-public interface CharacterConstant {
+public interface StringConstant {
 
     String SYMBOL_BAR = "-";
 

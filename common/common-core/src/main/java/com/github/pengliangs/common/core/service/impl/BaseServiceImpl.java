@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.core.toolkit.*;
 import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
 import com.baomidou.mybatisplus.core.toolkit.support.SerializedLambda;
 import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
-import com.github.pengliangs.common.core.mapper.BaseMapper;
+import com.github.pengliangs.common.core.dao.BaseDAO;
 import com.github.pengliangs.common.core.service.BaseService;
 import org.apache.ibatis.binding.MapperMethod;
 import org.apache.ibatis.session.SqlSession;
@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
  *  @Transactional(readOnly = true)
  * @author Caratacus
  */
-public class BaseServiceImpl<M extends BaseMapper<T>, T> implements BaseService<T> {
+public class BaseServiceImpl<M extends BaseDAO<T>, T> implements BaseService<T> {
 
     @Autowired
     protected M baseMapper;
@@ -48,7 +48,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T> implements BaseService<
         return SqlHelper.retBool(result);
     }
 
-    protected Class<T> currentModelClass() {
+    protected Class<?> currentModelClass() {
         return ReflectionKit.getSuperClassGenericType(getClass(), 1);
     }
 

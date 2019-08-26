@@ -7,6 +7,7 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
+ * 公共参数配置
  * @author pengliang
  * @date 2019/8/25 18:26
  */
@@ -15,4 +16,5 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Data
 @ConfigurationProperties("common")
 public class CommonProperties {
+
 }

@@ -1,4 +1,4 @@
-package com.github.pengliangs.common.core.mapper;
+package com.github.pengliangs.common.core.dao;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -16,7 +16,7 @@ import java.util.List;
  * @author Caratacus
  * @see com.baomidou.mybatisplus.core.mapper.BaseMapper
  */
-public interface BaseMapper<T> {
+public interface BaseDAO<T> {
 
     /**
      * <p>

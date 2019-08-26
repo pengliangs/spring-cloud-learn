@@ -1,5 +1,6 @@
 package com.github.pengliangs.user;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -9,6 +10,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @date: 2019/8/23 18:21
  * @description：用户服务
  */
+@MapperScan("com.github.pengliangs.user.dao")
 @EnableDiscoveryClient
 @SpringBootApplication
 public class UserApplication {
