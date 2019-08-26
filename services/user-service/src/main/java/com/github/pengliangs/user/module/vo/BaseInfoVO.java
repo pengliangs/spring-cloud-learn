@@ -1,5 +1,7 @@
 package com.github.pengliangs.user.module.vo;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -22,6 +24,7 @@ public class BaseInfoVO implements Serializable {
     /**
      * 主键;用户Id
      */
+    @JsonSerialize(using = ToStringSerializer.class)
     private Long id;
 
     /**

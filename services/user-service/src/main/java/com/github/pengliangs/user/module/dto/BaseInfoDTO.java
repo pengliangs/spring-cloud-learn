@@ -1,5 +1,7 @@
 package com.github.pengliangs.user.module.dto;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -27,6 +29,7 @@ public class BaseInfoDTO implements Serializable {
     /**
      * 主键;用户Id
      */
+    @JsonSerialize(using = ToStringSerializer.class)
     private Long id;
 
     /**
