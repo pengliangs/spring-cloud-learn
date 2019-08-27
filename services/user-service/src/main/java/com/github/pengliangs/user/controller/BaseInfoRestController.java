@@ -1,5 +1,6 @@
 package com.github.pengliangs.user.controller;
 
+import com.github.pengliangs.common.core.responce.ResultData;
 import com.github.pengliangs.user.mapper.BaseInfoMapper;
 import com.github.pengliangs.user.module.vo.BaseInfoVO;
 import com.github.pengliangs.user.service.BaseInfoService;
@@ -37,4 +38,13 @@ public class BaseInfoRestController {
         return baseInfoMapper.toBaseInfoVO(baseInfoService.getById(userId));
     }
 
+    @GetMapping("/two")
+    public BaseInfoVO resultDataTwo() {
+        BaseInfoVO baseInfoVO = new BaseInfoVO();
+        baseInfoVO.setId(1L);
+        baseInfoVO.setUserNickName("张三");
+        int i = 1/0;
+        int b = 0/1;
+        return baseInfoVO;
+    }
 }

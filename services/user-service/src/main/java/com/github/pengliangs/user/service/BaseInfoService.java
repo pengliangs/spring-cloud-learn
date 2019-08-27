@@ -1,8 +1,7 @@
 package com.github.pengliangs.user.service;
 
-import com.github.pengliangs.user.module.dto.BaseInfoDTO;
-import com.github.pengliangs.user.module.entity.BaseInfo;
 import com.github.pengliangs.common.core.service.BaseService;
+import com.github.pengliangs.user.module.entity.BaseInfo;
 
 /**
  * <p>
@@ -13,6 +12,5 @@ import com.github.pengliangs.common.core.service.BaseService;
  * @since 2019-08-26
  */
 public interface BaseInfoService extends BaseService<BaseInfo> {
-
 
 }

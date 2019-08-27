@@ -1,11 +1,7 @@
 package com.github.pengliangs.user.service.impl;
 
-import com.github.pengliangs.common.core.constant.PageConstant;
-import com.github.pengliangs.common.core.enums.BaseEnum;
 import com.github.pengliangs.common.core.service.impl.BaseServiceImpl;
 import com.github.pengliangs.user.dao.BaseInfoDAO;
-import com.github.pengliangs.user.mapper.BaseInfoMapper;
-import com.github.pengliangs.user.module.dto.BaseInfoDTO;
 import com.github.pengliangs.user.module.entity.BaseInfo;
 import com.github.pengliangs.user.service.BaseInfoService;
 import org.springframework.stereotype.Service;
