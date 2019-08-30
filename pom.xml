@@ -38,6 +38,7 @@
         <mybatis-plus-generator.version>3.1.0</mybatis-plus-generator.version>
         <mapstruct.version>1.3.0.Final</mapstruct.version>
         <freemarker.version>2.3.28</freemarker.version>
+        <p6spy.version>3.8.5</p6spy.version>
     </properties>
 
     <dependencies>

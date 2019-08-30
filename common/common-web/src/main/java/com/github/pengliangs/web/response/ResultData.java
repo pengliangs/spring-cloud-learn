@@ -1,4 +1,4 @@
-package com.github.pengliangs.common.core.responce;
+package com.github.pengliangs.web.response;
 
 import lombok.AccessLevel;
 import lombok.Data;

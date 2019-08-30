@@ -17,4 +17,6 @@ public interface BaseInfoMapper {
     BaseInfoVO toBaseInfoVO(BaseInfoDTO baseInfoDTO);
 
     BaseInfoVO toBaseInfoVO(BaseInfo baseInfo);
+
+    BaseInfo toBaseInfo(BaseInfoDTO baseInfoDTO);
 }

@@ -4,6 +4,9 @@
 
 ```lua
 spring-cloud-learn
+├── common -- 共模块抽取
+     ├── common-core 公共核心模块
+     └── common-web web公共模块
 ├── eureka -- 注册中心[8761]
 ├── gateway -- 服务网关[9000]
 └── graphical -- 图形模块聚合 

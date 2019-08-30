@@ -1,15 +1,15 @@
 package com.github.pengliangs.user.controller;
 
-import com.github.pengliangs.common.core.responce.ResultData;
+import com.github.pengliangs.web.utils.ApiAssert;
 import com.github.pengliangs.user.mapper.BaseInfoMapper;
+import com.github.pengliangs.user.module.dto.BaseInfoDTO;
+import com.github.pengliangs.user.module.entity.BaseInfo;
 import com.github.pengliangs.user.module.vo.BaseInfoVO;
 import com.github.pengliangs.user.service.BaseInfoService;
+import com.github.pengliangs.web.enums.ErrorCodeEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 /**
@@ -38,13 +38,10 @@ public class BaseInfoRestController {
         return baseInfoMapper.toBaseInfoVO(baseInfoService.getById(userId));
     }
 
-    @GetMapping("/two")
-    public BaseInfoVO resultDataTwo() {
-        BaseInfoVO baseInfoVO = new BaseInfoVO();
-        baseInfoVO.setId(1L);
-        baseInfoVO.setUserNickName("张三");
-        int i = 1/0;
-        int b = 0/1;
-        return baseInfoVO;
+    @PostMapping
+    public BaseInfoVO save(@RequestBody BaseInfoDTO baseInfoDTO) {
+        BaseInfo baseInfo = baseInfoMapper.toBaseInfo(baseInfoDTO);
+        ApiAssert.isTrue(ErrorCodeEnum.SAVE_FAILURE,baseInfoService.save(baseInfo));
+        return baseInfoMapper.toBaseInfoVO(baseInfo);
     }
 }

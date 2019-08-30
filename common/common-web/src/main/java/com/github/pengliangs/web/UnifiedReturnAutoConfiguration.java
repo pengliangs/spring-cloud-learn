@@ -1,7 +1,7 @@
-package com.github.pengliangs.user.config;
+package com.github.pengliangs.web;
 
-import com.github.pengliangs.common.core.exception.BusinessException;
-import com.github.pengliangs.common.core.responce.ResultData;
+import com.github.pengliangs.web.exception.ApiException;
+import com.github.pengliangs.web.response.ResultData;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
@@ -16,17 +16,19 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * 统一异常
+ * 统一异常 及 返回
+ *
  * @author pengliang
  * @date 2019/8/27 17:35
  */
 @EnableWebMvc
 @Configuration
-public class UnifiedReturnConfiguration {
+public class UnifiedReturnAutoConfiguration {
 
-
-    @RestControllerAdvice("com.github.pengliangs.user.controller")
-    static class CommonResultResponseAdvice implements ResponseBodyAdvice<Object> {
+    @RestControllerAdvice({
+            "com.github.pengliangs.user.controller"
+    })
+    static class ResultDataResponseAdvice implements ResponseBodyAdvice<Object> {
         @Override
         public boolean supports(MethodParameter methodParameter, Class<? extends HttpMessageConverter<?>> aClass) {
             return true;
@@ -38,7 +40,7 @@ public class UnifiedReturnConfiguration {
                 , ServerHttpRequest serverHttpRequest
                 , ServerHttpResponse serverHttpResponse) {
 
-            if (body instanceof ResultData){
+            if (body instanceof ResultData) {
                 return body;
             }
 
@@ -46,16 +48,18 @@ public class UnifiedReturnConfiguration {
         }
     }
 
-    @RestControllerAdvice("com.github.pengliangs.user.controller")
-    static class UnifiedExceptionHandler{
+    @RestControllerAdvice({
+            "com.github.pengliangs.user.controller"
+    })
+    static class UnifiedExceptionHandler {
 
-        @ExceptionHandler(BusinessException.class)
-        public ResultData<Void> handleBusinessException(BusinessException bex){
-            return ResultData.failure(bex.getErrorCode(), bex.getErrorMsg());
+        @ExceptionHandler(ApiException.class)
+        public ResultData<Void> handleApiException(ApiException apiEx) {
+            return ResultData.failure(apiEx.getErrorCode(), apiEx.getErrorMsg());
         }
 
         @ExceptionHandler(Exception.class)
-        public ResultData<Void> handleException(Exception ex){
+        public ResultData<Void> handleException(Exception ex) {
             return ResultData.failure(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, ex.getMessage());
         }
     }

@@ -12,3 +12,28 @@ mybatis-plus:
       logic-not-delete-value: 1
     banner: false
     super-mapper-class: com.github.pengliangs.common.core.dao.BaseDAO
+
+spring:
+  profiles:
+    active: dev
+  jackson:
+    time-zone: GMT+8
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+      FAIL_ON_EMPTY_BEANS: false
+    deserialization:
+      FAIL_ON_UNKNOWN_PROPERTIES: false
+    default-property-inclusion: non_null
+    mapper:
+      PROPAGATE_TRANSIENT_MARKER: true
+    parser:
+      ALLOW_BACKSLASH_ESCAPING_ANY_CHARACTER: true
+  liquibase:
+    enabled: false
+  aop:
+    auto: true
+    proxy-target-class: true
+  servlet:
+    multipart:
+      max-file-size: 3GB
+      max-request-size: 5GB

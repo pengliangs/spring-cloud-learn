@@ -3,6 +3,7 @@ package com.github.pengliangs.common.core;
 import com.github.pengliangs.common.core.properties.CommonProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 /**
  * @author pengliang
@@ -10,6 +11,8 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @EnableConfigurationProperties(CommonProperties.class)
+@Import({MyBatisPlusConfiguration.class})
 public class CommonAutoConfiguration {
+
 
 }

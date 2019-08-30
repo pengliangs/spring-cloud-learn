@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.github.pengliangs.web.CommonWebAutoConfiguration,\
+  com.github.pengliangs.web.UnifiedReturnAutoConfiguration

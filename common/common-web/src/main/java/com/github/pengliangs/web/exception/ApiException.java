@@ -1,4 +1,4 @@
-package com.github.pengliangs.common.core.exception;
+package com.github.pengliangs.web.exception;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -12,7 +12,7 @@ import lombok.experimental.FieldDefaults;
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor
-public class BusinessException extends RuntimeException  {
+public class ApiException extends RuntimeException  {
 
     /**
      * 错误状态码
@@ -23,5 +23,6 @@ public class BusinessException extends RuntimeException  {
      * 错误消息
      */
     String errorMsg;
+
 
 }

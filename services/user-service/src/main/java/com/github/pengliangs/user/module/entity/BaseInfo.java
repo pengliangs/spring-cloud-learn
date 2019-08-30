@@ -2,6 +2,7 @@ package com.github.pengliangs.user.module.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -83,6 +84,7 @@ public class BaseInfo implements Serializable {
     /**
      * 是否有效:有效-1;无效-0
      */
+    @TableLogic
     @TableField("is_valid")
     private Boolean valid;
 
