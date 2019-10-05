@@ -7,14 +7,15 @@ spring:
   boot:
     admin:
       client:
-        url: http://localhost:9010
+        url: http://admin-server:9010
 #注册中心配置
 eureka:
   instance:
     prefer-ip-address: true
+    hostname: zipkin
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://eureka:8761/eureka/
 
 management:
   metrics:
