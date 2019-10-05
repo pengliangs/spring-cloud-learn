@@ -15,6 +15,7 @@ services:
     ports:
       - 8761:8761
     container_name: pl-eureka
+    hostname: eureka
 
   pl-gateway:
     build:
@@ -24,6 +25,7 @@ services:
     ports:
       - 9000:9000
     container_name: pl-gateway
+    hostname: gateway
 
   pl-zipkin:
     build:
@@ -33,7 +35,8 @@ services:
     ports:
       - 9411:9411
     container_name: pl-zipkin
-
+    hostname: zipkin
+    
   pl-admin-server:
     build:
       context: ./
@@ -42,6 +45,7 @@ services:
     ports:
       - 9010:9010
     container_name: pl-admin-server
+    hostname: admin-server
 
   pl-user-service:
     build:
@@ -51,3 +55,4 @@ services:
     ports:
       - 9040:9040
     container_name: pl-user-service
+    hostname: user-service
