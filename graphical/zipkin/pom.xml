@@ -33,6 +33,7 @@
     </dependencies>
 
     <build>
+        <finalName>zipkin</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

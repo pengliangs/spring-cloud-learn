@@ -1,0 +1,53 @@
+version: '3'
+services:
+  pl-mariadb:
+    image: mariadb
+    ports:
+      - 3306:3306
+    restart: always
+    container_name: pl-mariadb
+
+  pl-eureka:
+    build:
+      context: ./
+      dockerfile: ./eureka/Dockerfile
+    restart: always
+    ports:
+      - 8761:8761
+    container_name: pl-eureka
+
+  pl-gateway:
+    build:
+      context: ./
+      dockerfile: ./gateway/Dockerfile
+    restart: always
+    ports:
+      - 9000:9000
+    container_name: pl-gateway
+
+  pl-zipkin:
+    build:
+      context: ./
+      dockerfile: ./graphical/zipkin/Dockerfile
+    restart: always
+    ports:
+      - 9411:9411
+    container_name: pl-zipkin
+
+  pl-admin-server:
+    build:
+      context: ./
+      dockerfile: ./graphical/admin-server/Dockerfile
+    restart: always
+    ports:
+      - 9010:9010
+    container_name: pl-admin-server
+
+  pl-user-service:
+    build:
+      context: ./
+      dockerfile: ./services/user-service/Dockerfile
+    restart: always
+    ports:
+      - 9040:9040
+    container_name: pl-user-service
