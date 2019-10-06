@@ -1,0 +1,29 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: config
+  profiles:
+    active: native
+
+  # ÅäÖÃÖĞĞÄ
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/config/
+
+# ×¢²áÖĞĞÄÅäÖÃ
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://eureka:8761/eureka/
+
+# ±©Â¶¼à¿Ø¶Ëµã
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
