@@ -1,5 +1,17 @@
 version: '3'
 services:
+  my-mariadb:
+    build:
+      context: ./
+      dockerfile: ./db/Dockerfile
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    restart: always
+    container_name: my-mariadb
+    image: my-mariadb
+    ports:
+      - 3306:3306
+
   eureka:
     build:
       context: ./
@@ -10,6 +22,18 @@ services:
     container_name: eureka
     hostname: eureka
     image: eureka
+
+  config:
+    build:
+      context: ./
+      dockerfile: ./config/Dockerfile
+    restart: always
+    ports:
+      - 8888:8888
+    container_name: config
+    hostname: config
+    image: config
+
 
   gateway:
     build:
@@ -43,3 +67,14 @@ services:
     container_name: admin-server
     hostname: admin-server
     image: admin-server
+
+  user-service:
+    build:
+      context: ./
+      dockerfile: ./services/user-server/Dockerfile
+    restart: always
+    ports:
+      - 9040:9040
+    container_name: user-server
+    hostname: user-server
+    image: user-server

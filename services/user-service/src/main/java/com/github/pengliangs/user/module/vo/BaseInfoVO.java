@@ -30,15 +30,15 @@ public class BaseInfoVO implements Serializable {
     /**
      * 用户头像
      */
-    private String userPic;
+    private String userAvatar;
 
     /**
      * 用户昵称
      */
-    private String userNickName;
+    private String userNickname;
 
     /**
-     * 用户性别:男-1;女-2
+	 * 用户性别:0 女，1 男
      */
     private Integer userSex;
 
