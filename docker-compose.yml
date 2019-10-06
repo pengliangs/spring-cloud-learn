@@ -71,10 +71,10 @@ services:
   user-service:
     build:
       context: ./
-      dockerfile: ./services/user-server/Dockerfile
+      dockerfile: ./services/user-service/Dockerfile
     restart: always
     ports:
       - 9040:9040
-    container_name: user-server
-    hostname: user-server
-    image: user-server
+    container_name: user-service
+    hostname: user-service
+    image: user-service
