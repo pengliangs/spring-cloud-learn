@@ -1,45 +1,45 @@
 version: '3'
 services:
-  pl-eureka:
+  eureka:
     build:
       context: ./
       dockerfile: ./eureka/Dockerfile
     restart: always
     ports:
       - 8761:8761
-    container_name: pl-eureka
+    container_name: eureka
     hostname: eureka
-    image: pl-eureka
+    image: eureka
 
-  pl-gateway:
+  gateway:
     build:
       context: ./
       dockerfile: ./gateway/Dockerfile
     restart: always
     ports:
       - 9000:9000
-    container_name: pl-gateway
+    container_name: gateway
     hostname: gateway
-    image: pl-gateway
+    image: gateway
 
-  pl-zipkin:
+  zipkin:
     build:
       context: ./
       dockerfile: ./graphical/zipkin/Dockerfile
     restart: always
     ports:
       - 9411:9411
-    container_name: pl-zipkin
+    container_name: zipkin
     hostname: zipkin
-    image: pl-zipkin
+    image: zipkin
 
-  pl-admin-server:
+  admin-server:
     build:
       context: ./
       dockerfile: ./graphical/admin-server/Dockerfile
     restart: always
     ports:
       - 9010:9010
-    container_name: pl-admin-server
+    container_name: admin-server
     hostname: admin-server
-    image: pl-admin-server
+    image: admin-server
