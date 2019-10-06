@@ -1,12 +1,5 @@
 version: '3'
 services:
-  pl-mariadb:
-    image: mariadb
-    ports:
-      - 3306:3306
-    restart: always
-    container_name: pl-mariadb
-
   pl-eureka:
     build:
       context: ./
@@ -50,14 +43,3 @@ services:
     container_name: pl-admin-server
     hostname: admin-server
     image: pl-admin-server
-
-  pl-user-service:
-    build:
-      context: ./
-      dockerfile: ./services/user-service/Dockerfile
-    restart: always
-    ports:
-      - 9040:9040
-    container_name: pl-user-service
-    hostname: user-service
-    image: pl-user-service
