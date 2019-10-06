@@ -16,6 +16,7 @@ services:
       - 8761:8761
     container_name: pl-eureka
     hostname: eureka
+    image: pl-eureka
 
   pl-gateway:
     build:
@@ -26,6 +27,7 @@ services:
       - 9000:9000
     container_name: pl-gateway
     hostname: gateway
+    image: pl-gateway
 
   pl-zipkin:
     build:
@@ -36,7 +38,8 @@ services:
       - 9411:9411
     container_name: pl-zipkin
     hostname: zipkin
-    
+    image: pl-zipkin
+
   pl-admin-server:
     build:
       context: ./
@@ -46,6 +49,7 @@ services:
       - 9010:9010
     container_name: pl-admin-server
     hostname: admin-server
+    image: pl-admin-server
 
   pl-user-service:
     build:
@@ -56,3 +60,4 @@ services:
       - 9040:9040
     container_name: pl-user-service
     hostname: user-service
+    image: pl-user-service
