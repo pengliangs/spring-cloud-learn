@@ -6,14 +6,14 @@ spring:
   profiles:
     active: native
 
-  # ÅäÖÃÖĞĞÄ
+  # é…ç½®ä¸­å¿ƒ
   cloud:
     config:
       server:
         native:
           search-locations: classpath:/config/
 
-# ×¢²áÖĞĞÄÅäÖÃ
+# æ³¨å†Œä¸­å¿ƒé…ç½®
 eureka:
   instance:
     prefer-ip-address: true
@@ -21,7 +21,7 @@ eureka:
     service-url:
       defaultZone: http://eureka:8761/eureka/
 
-# ±©Â¶¼à¿Ø¶Ëµã
+# æš´éœ²ç›‘æ§ç«¯ç‚¹
 management:
   endpoints:
     web:

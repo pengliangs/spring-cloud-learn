@@ -2,6 +2,7 @@ package com.github.pengliangs.web;
 
 import com.github.pengliangs.web.exception.ApiException;
 import com.github.pengliangs.web.response.ResultData;
+import com.github.pengliangs.web.utils.JacksonUtils;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
@@ -44,7 +45,12 @@ public class UnifiedReturnAutoConfiguration {
                 return body;
             }
 
-            return ResultData.success(body);
+			ResultData resultData = ResultData.success(body);
+            if (body instanceof String){
+            	return JacksonUtils.toJson(resultData);
+			}
+
+            return resultData;
         }
     }
 
@@ -60,6 +66,7 @@ public class UnifiedReturnAutoConfiguration {
 
         @ExceptionHandler(Exception.class)
         public ResultData<Void> handleException(Exception ex) {
+			ex.printStackTrace();
             return ResultData.failure(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, ex.getMessage());
         }
     }
