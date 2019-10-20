@@ -14,7 +14,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Data
-@ConfigurationProperties("common")
+@ConfigurationProperties("com.github.pengliangs.common")
 public class CommonProperties {
 
 }

@@ -20,4 +20,14 @@ eureka:
     prefer-ip-address: true
   client:
     service-url:
-      defaultZone: http://eureka:8761/eureka/
+      defaultZone: http://eureka:123456@localhost:8761/eureka/
+security:
+  oauth2:
+    client:
+      clientId: test
+      clientSecret: test
+      accessTokenUri: http://auth-server/oauth/oauth/token
+      userAuthorizationUri: http://auth-server/oauth/oauth/authorize
+    resource:
+      loadBalanced: true
+      tokenInfoUri: http://auth-server/oauth/check_token

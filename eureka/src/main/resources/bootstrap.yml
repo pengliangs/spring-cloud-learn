@@ -3,11 +3,10 @@ server:
 spring:
   application:
     name: eureka
-  #应用监控
-  boot:
-    admin:
-      client:
-        url: http://admin-server:9010
+  security:
+    user:
+      name: eureka
+      password: 123456
 
 #注册中心配置
 eureka:
@@ -21,7 +20,7 @@ eureka:
     #不向注册中心注册自己
     registerWithEureka: false
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: http://eureka:123456@${eureka.instance.hostname}:${server.port}/eureka/
   server:
     #心跳检测间隔
     eviction-interval-timer-in-ms: 4000

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>parent</artifactId>
+		<groupId>com.github.pengliangs</groupId>
+		<version>1.0-SNAPSHOT</version>
+		<relativePath>../parent</relativePath>
+	</parent>
+	<artifactId>auth-server</artifactId>
+	<name>auth-server</name>
+	<description>微服务认证中心</description>
+
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-oauth2</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring-security-oauth2</artifactId>
+					<groupId>org.springframework.security.oauth</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.pengliangs</groupId>
+			<artifactId>common-security</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring-security-oauth2</artifactId>
+					<groupId>org.springframework.security.oauth</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<artifactId>spring-security-oauth2</artifactId>
+			<groupId>org.springframework.security.oauth</groupId>
+			<version>${security.oauth.version}</version>
+		</dependency>
+		<!--JDBC相关-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+
+		<!--排除tomcat依赖使用undertow容器-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+					<groupId>org.springframework.boot</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-undertow</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

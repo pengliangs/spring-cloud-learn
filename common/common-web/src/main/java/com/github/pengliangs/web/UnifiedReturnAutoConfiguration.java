@@ -1,8 +1,8 @@
 package com.github.pengliangs.web;
 
-import com.github.pengliangs.web.exception.ApiException;
-import com.github.pengliangs.web.response.ResultData;
-import com.github.pengliangs.web.utils.JacksonUtils;
+import com.github.pengliangs.common.core.exception.ApiException;
+import com.github.pengliangs.common.core.response.ResultData;
+import com.github.pengliangs.common.core.utils.JacksonUtils;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;

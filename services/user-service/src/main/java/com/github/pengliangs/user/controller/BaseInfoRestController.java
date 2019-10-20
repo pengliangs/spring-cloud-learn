@@ -1,12 +1,12 @@
 package com.github.pengliangs.user.controller;
 
-import com.github.pengliangs.web.utils.ApiAssert;
+import com.github.pengliangs.common.core.enums.BaseErrorEnum;
+import com.github.pengliangs.common.core.utils.ApiAssert;
 import com.github.pengliangs.user.mapper.BaseInfoMapper;
 import com.github.pengliangs.user.module.dto.BaseInfoDTO;
 import com.github.pengliangs.user.module.entity.BaseInfo;
 import com.github.pengliangs.user.module.vo.BaseInfoVO;
 import com.github.pengliangs.user.service.BaseInfoService;
-import com.github.pengliangs.web.enums.ErrorCodeEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -41,7 +41,7 @@ public class BaseInfoRestController {
     @PostMapping
     public BaseInfoVO save(@RequestBody BaseInfoDTO baseInfoDTO) {
         BaseInfo baseInfo = baseInfoMapper.toBaseInfo(baseInfoDTO);
-        ApiAssert.isTrue(ErrorCodeEnum.SAVE_FAILURE,baseInfoService.save(baseInfo));
+        ApiAssert.isTrue(BaseErrorEnum.SAVE_FAILURE,baseInfoService.save(baseInfo));
         return baseInfoMapper.toBaseInfoVO(baseInfo);
     }
 }

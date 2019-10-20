@@ -152,13 +152,13 @@ public final class MySqlCodeGenerator {
                 .setColumnNaming(NamingStrategy.underline_to_camel)
                // .setSuperEntityClass("com.github.pengliangs.common.core.module.BaseModule")
                 // 自定义 mapper 父类
-                .setSuperMapperClass("com.github.pengliangs.common.core.dao.BaseDAO")
+                .setSuperMapperClass("BaseDAO")
                 // 自定义 controller 父类
-                .setSuperControllerClass("com.github.pengliangs.common.core.controller.BaseController")
+                .setSuperControllerClass("BaseController")
                 // 自定义 service 实现类父类
-                .setSuperServiceImplClass("com.github.pengliangs.common.core.service.impl.BaseServiceImpl")
+                .setSuperServiceImplClass("BaseServiceImpl")
                 // 自定义 service 接口父类
-                .setSuperServiceClass("com.github.pengliangs.common.core.service.BaseService")
+                .setSuperServiceClass("BaseService")
                 // 【实体】是否生成字段常量（默认 false）
                 .setEntityColumnConstant(false)
                 // 【实体】是否为构建者模型（默认 false）

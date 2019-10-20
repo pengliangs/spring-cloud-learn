@@ -9,10 +9,18 @@ spring:
           #将服务名称配置为小写，注册中心的服务名称默认被转换为大写
           lonwer-case-service-id: true
       routes:
+        # 用户服务
         - id: user-service
           uri: lb://user-service
           predicates:
             - Path=/user/**
+          filters:
+            - StripPrefix=1
+        # 认证中心
+        - id: auth-server
+          uri: lb://auth-server
+          predicates:
+            - Path=/auth/**
           filters:
             - StripPrefix=1
   #应用监控
