@@ -1,10 +1,20 @@
 spring:
   application:
     name: auth-server
-#  security:
-#    user:
-#      name: user
-#      password: 123456
+  profiles:
+    active: dev
+  #配置中心
+  cloud:
+    config:
+      fail-fast: true
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+      discovery:
+        enabled: true
+        service-id: config
+  # 运行bean覆盖
+  main:
+    allow-bean-definition-overriding: true
 
 # 注册中心配置
 eureka:
@@ -13,19 +23,3 @@ eureka:
   client:
     service-url:
       defaultZone: http://eureka:123456@localhost:8761/eureka/
-
----
-# 数据源
-spring:
-  datasource:
-    type: com.zaxxer.hikari.HikariDataSource
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: 123456
-    url: jdbc:mysql://192.168.1.103:3306/oauth_learn?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
-  redis:
-    port: 6379
-    host: 192.168.1.103
-  # 运行bean覆盖
-  main:
-    allow-bean-definition-overriding: true

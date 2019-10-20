@@ -1,0 +1,14 @@
+oauth:
+  server:
+    host: auth-server
+
+security:
+  oauth2:
+    client:
+      clientId: test
+      clientSecret: test
+      accessTokenUri: http://${oauth.server.host}/oauth/oauth/token
+      userAuthorizationUri: http://${oauth.server.host}/oauth/oauth/authorize
+    resource:
+      loadBalanced: true
+      tokenInfoUri: http://${oauth.server.host}/oauth/check_token

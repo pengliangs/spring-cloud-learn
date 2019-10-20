@@ -1,7 +1,7 @@
 package com.github.pengliangs.auth.endpoint;
 
 import cn.hutool.core.util.StrUtil;
-import com.github.pengliangs.common.constant.SecurityConstants;
+import com.github.pengliangs.common.security.constant.SecurityConstants;
 import com.github.pengliangs.common.core.response.ResultData;
 import lombok.AllArgsConstructor;
 import org.springframework.data.redis.core.RedisTemplate;

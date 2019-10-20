@@ -9,6 +9,6 @@ public interface ClientConstant {
 	/**
 	 * 用户服务
 	 */
-	String USER_SERVICE = "user-service";
+	String USER_SERVICE = "USER-SERVICE";
 
 }

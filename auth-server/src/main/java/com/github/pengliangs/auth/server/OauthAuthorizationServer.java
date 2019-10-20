@@ -1,12 +1,11 @@
 package com.github.pengliangs.auth.server;
 
-import com.github.pengliangs.common.constant.SecurityConstants;
-import com.github.pengliangs.common.exception.CustomWebResponseExceptionTranslator;
-import com.github.pengliangs.common.service.CustomClientDetailsService;
-import com.github.pengliangs.common.service.SysUser;
+import com.github.pengliangs.common.security.constant.SecurityConstants;
+import com.github.pengliangs.common.security.exception.CustomWebResponseExceptionTranslator;
+import com.github.pengliangs.common.security.service.CustomClientDetailsService;
+import com.github.pengliangs.common.security.service.SysUser;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
-import org.apache.commons.lang.WordUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -17,7 +16,6 @@ import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;

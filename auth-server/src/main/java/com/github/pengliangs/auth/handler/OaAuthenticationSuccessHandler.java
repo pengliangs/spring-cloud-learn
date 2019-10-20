@@ -2,7 +2,7 @@ package com.github.pengliangs.auth.handler;
 
 import com.github.pengliangs.common.core.response.ResultData;
 import com.github.pengliangs.common.core.utils.JacksonUtils;
-import com.github.pengliangs.common.service.SysUser;
+import com.github.pengliangs.common.security.service.SysUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.github.pengliangs.auth.security;
 
-import com.github.pengliangs.common.exception.CustomAccessDeniedHandler;
+import com.github.pengliangs.common.security.exception.CustomAccessDeniedHandler;
 import lombok.SneakyThrows;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

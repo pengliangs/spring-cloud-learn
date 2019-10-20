@@ -1,7 +1,7 @@
 package com.github.pengliangs.auth.handler;
 
-import com.github.pengliangs.common.request.ClientBean;
-import com.github.pengliangs.common.request.ExtractRequest;
+import com.github.pengliangs.common.security.request.ClientBean;
+import com.github.pengliangs.common.security.request.ExtractRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
