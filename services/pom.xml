@@ -5,7 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <modules>
         <module>user-service</module>
-    </modules>
+		<module>event-service</module>
+	</modules>
 
     <parent>
         <artifactId>parent</artifactId>

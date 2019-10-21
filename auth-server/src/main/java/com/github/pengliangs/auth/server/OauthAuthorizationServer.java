@@ -96,7 +96,7 @@ public class OauthAuthorizationServer extends AuthorizationServerConfigurerAdapt
 			SysUser user = (SysUser) authentication.getUserAuthentication().getPrincipal();
 			final Map<String, Object> info = new HashMap<String, Object>(2) {{
 				put("license", SecurityConstants.LICENSE);
-				put("userId", user.getId());
+				put(SecurityConstants.DETAILS_USER_ID, user.getId());
 			}};
 			DefaultOAuth2AccessToken oAuth2AccessToken = (DefaultOAuth2AccessToken) accessToken;
 			oAuth2AccessToken.setAdditionalInformation(info);

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>services</artifactId>
+		<groupId>com.github.pengliangs</groupId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>event-service</artifactId>
+	<packaging>jar</packaging>
+	<description>动态相关服务</description>
+
+	<dependencies>
+
+<!--		<dependency>-->
+<!--			<groupId>com.alibaba</groupId>-->
+<!--			<artifactId>druid-spring-boot-starter</artifactId>-->
+<!--		</dependency>-->
+
+		<!--配置中心客户端-->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
+
+
+		<!--web公用模块-->
+		<dependency>
+			<groupId>com.github.pengliangs</groupId>
+			<artifactId>common-web</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+
+		<!--安全模块-->
+		<dependency>
+			<groupId>com.github.pengliangs</groupId>
+			<artifactId>common-security</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>event-service</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+</project>

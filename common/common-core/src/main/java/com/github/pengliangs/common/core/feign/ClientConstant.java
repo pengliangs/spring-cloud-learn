@@ -9,6 +9,11 @@ public interface ClientConstant {
 	/**
 	 * 用户服务
 	 */
-	String USER_SERVICE = "USER-SERVICE";
+	String USER_SERVICE = "user-service";
+
+	/**
+	 * 动态服务
+	 */
+	String EVENT_SERVICE = "event-service";
 
 }

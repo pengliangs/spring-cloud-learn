@@ -26,48 +26,50 @@ import javax.servlet.http.HttpServletResponse;
 @Configuration
 public class UnifiedReturnAutoConfiguration {
 
-    @RestControllerAdvice({
-            "com.github.pengliangs.user.controller"
-    })
-    static class ResultDataResponseAdvice implements ResponseBodyAdvice<Object> {
-        @Override
-        public boolean supports(MethodParameter methodParameter, Class<? extends HttpMessageConverter<?>> aClass) {
-            return true;
-        }
+	@RestControllerAdvice({
+		"com.github.pengliangs.user.controller",
+		"com.github.pengliangs.event.controller"
+	})
+	static class ResultDataResponseAdvice implements ResponseBodyAdvice<Object> {
+		@Override
+		public boolean supports(MethodParameter methodParameter, Class<? extends HttpMessageConverter<?>> aClass) {
+			return true;
+		}
 
-        @Override
-        public Object beforeBodyWrite(Object body, MethodParameter methodParameter, MediaType mediaType
-                , Class<? extends HttpMessageConverter<?>> aClass
-                , ServerHttpRequest serverHttpRequest
-                , ServerHttpResponse serverHttpResponse) {
+		@Override
+		public Object beforeBodyWrite(Object body, MethodParameter methodParameter, MediaType mediaType
+			, Class<? extends HttpMessageConverter<?>> aClass
+			, ServerHttpRequest serverHttpRequest
+			, ServerHttpResponse serverHttpResponse) {
 
-            if (body instanceof ResultData) {
-                return body;
-            }
-
-			ResultData resultData = ResultData.success(body);
-            if (body instanceof String){
-            	return JacksonUtils.toJson(resultData);
+			if (body instanceof ResultData) {
+				return body;
 			}
 
-            return resultData;
-        }
-    }
+			ResultData resultData = ResultData.success(body);
+			if (body instanceof String) {
+				return JacksonUtils.toJson(resultData);
+			}
 
-    @RestControllerAdvice({
-            "com.github.pengliangs.user.controller"
-    })
-    static class UnifiedExceptionHandler {
+			return resultData;
+		}
+	}
 
-        @ExceptionHandler(ApiException.class)
-        public ResultData<Void> handleApiException(ApiException apiEx) {
-            return ResultData.failure(apiEx.getErrorCode(), apiEx.getErrorMsg());
-        }
+	@RestControllerAdvice({
+		"com.github.pengliangs.user.controller",
+		"com.github.pengliangs.event.controller"
+	})
+	static class UnifiedExceptionHandler {
 
-        @ExceptionHandler(Exception.class)
-        public ResultData<Void> handleException(Exception ex) {
+		@ExceptionHandler(ApiException.class)
+		public ResultData<Void> handleApiException(ApiException apiEx) {
+			return ResultData.failure(apiEx.getErrorCode(), apiEx.getErrorMsg());
+		}
+
+		@ExceptionHandler(Exception.class)
+		public ResultData<Void> handleException(Exception ex) {
 			ex.printStackTrace();
-            return ResultData.failure(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, ex.getMessage());
-        }
-    }
+			return ResultData.failure(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, ex.getMessage());
+		}
+	}
 }

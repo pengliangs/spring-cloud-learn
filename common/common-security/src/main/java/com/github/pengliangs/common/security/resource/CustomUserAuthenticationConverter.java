@@ -12,6 +12,7 @@ import org.springframework.util.StringUtils;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * @author pengliang on 2019-10-20 17:50
@@ -49,7 +50,7 @@ public class CustomUserAuthenticationConverter implements UserAuthenticationConv
 			Collection<? extends GrantedAuthority> authorities = getAuthorities(map);
 
 			String username = (String) map.get(SecurityConstants.DETAILS_USERNAME);
-			Long id = (Long) map.get(SecurityConstants.DETAILS_USER_ID);
+			Long id = Long.valueOf(Objects.toString(map.get(SecurityConstants.DETAILS_USER_ID),"0"));
 			SysUser user = new SysUser(id, username, N_A, true
 				, true, true, true, authorities);
 			return new UsernamePasswordAuthenticationToken(user, N_A, authorities);

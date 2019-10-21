@@ -46,12 +46,12 @@ public interface SecurityConstants {
 	/**
 	 * 用户ID字段
 	 */
-	String DETAILS_USER_ID = "user_id";
+	String DETAILS_USER_ID = "userId";
 
 	/**
 	 * 用户名字段
 	 */
-	String DETAILS_USERNAME = "username";
+	String DETAILS_USERNAME = "user_name";
 
 	/**
 	 * 协议信息

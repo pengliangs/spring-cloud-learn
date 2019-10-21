@@ -1,0 +1,15 @@
+
+---
+spring:
+  #应用监控
+  boot:
+    admin:
+      client:
+        url: http://admin-server:9010
+  #服务链路追踪
+  zipkin:
+    base-url: http://zipkin:9411
+    sleuth:
+      sampler:
+        probability: 1
+
